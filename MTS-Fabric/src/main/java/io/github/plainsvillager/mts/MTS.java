@@ -6,6 +6,6 @@ public class MTS implements ModInitializer {
     public static final String MOD_ID = "mts";
     @Override
     public void onInitialize() {
-
+        MTSRegistry.finalRegistry();
     }
 }

@@ -2,9 +2,8 @@ package io.github.plainsvillager.mts.entity.transport;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.attribute.DefaultAttributeContainer;
-import net.minecraft.entity.attribute.EntityAttributes;
-import net.minecraft.entity.mob.MobEntity;
+import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.item.Item;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.world.World;
 
@@ -13,18 +12,13 @@ import net.minecraft.world.World;
  * @author PlainsVillager ZhiChii
  */
 public class AirPlane extends Entity {
+
     public AirPlane(EntityType<?> type, World world) {
         super(type, world);
     }
-    
 
-    /**
-     * 不知道啥玩意儿
-     */
     @Override
-    protected void initDataTracker() {
-
-    }
+    protected void initDataTracker() {}
 
     @Override
     protected void readCustomDataFromNbt(NbtCompound nbt) {}
@@ -35,5 +29,18 @@ public class AirPlane extends Entity {
     @Override
     public boolean isCollidable() {
         return true;
+    }
+
+    @Override
+    public boolean isPushable() {
+        return true;
+    }
+
+    protected void dropItems(DamageSource source) {
+        this.dropItem(this.asItem());
+    }
+
+    private Item asItem() {
+        return null;
     }
 }
