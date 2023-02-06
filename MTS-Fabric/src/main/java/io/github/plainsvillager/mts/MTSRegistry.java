@@ -1,7 +1,11 @@
 package io.github.plainsvillager.mts;
 
 import io.github.plainsvillager.mts.command.TagPlace;
+import io.github.plainsvillager.mts.item.PlainItem;
 import io.github.plainsvillager.mts.item.PlaneDebris;
+import io.github.plainsvillager.mts.entity.transport.PlainEntity;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnGroup;
 import net.minecraft.item.Item;
 import net.minecraft.registry.DefaultedRegistry;
 import net.minecraft.registry.Registries;
@@ -36,6 +40,7 @@ public final class MTSRegistry {
         public static final DefaultedRegistry<Item> ITEMS_REG_KEY = Registries.ITEM;
 
         public static final Item PLANE_DEBRIS = new PlaneDebris();
+        public static Item PLAIN_ITEM = new PlainItem(new Item.Settings().maxCount(1));
 
         /**
          * This method allows to reg item first time
@@ -43,6 +48,7 @@ public final class MTSRegistry {
         @ModRegistrySign(ModRegistrySignEnum.FIRST)
         static void itemsRegister() {
             Registry.register(ITEMS_REG_KEY, new Identifier(MOD_ID, "plane_debris"), PLANE_DEBRIS);
+            Registry.register(Registries.ITEM, new Identifier(MOD_ID, "plain"), PLAIN_ITEM);
         }
     }
 
@@ -51,6 +57,19 @@ public final class MTSRegistry {
         @ModRegistrySign(ModRegistrySignEnum.FIRST)
         static void commandsRegister() {
             TagPlace.registerCommand();
+        }
+    }
+
+    @ModRegistrySign(ModRegistrySignEnum.MIDDLE)
+    public static final class MTSEntityRegistry {
+        public static EntityType PLAIN_ENTITY_TYPE =
+                EntityType.Builder.create(PlainEntity::new, SpawnGroup.MISC)
+                        .setDimensions(1.375F, 0.5625F)
+                        .maxTrackingRange(10)
+                        .build("plain");
+        @ModRegistrySign(ModRegistrySignEnum.FIRST)
+        static void entitiesRegister(){
+            Registry.register(Registries.ENTITY_TYPE, new Identifier(MOD_ID, "plain"), PLAIN_ENTITY_TYPE);
         }
     }
 

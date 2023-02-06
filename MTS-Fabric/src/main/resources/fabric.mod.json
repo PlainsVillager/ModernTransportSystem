@@ -18,6 +18,9 @@
   "entrypoints": {
     "main": [
       "io.github.plainsvillager.mts.MTS"
+    ],
+    "client": [
+      "io.github.plainsvillager.mts.MTSClient"
     ]
   },
   "mixins": [
