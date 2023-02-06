@@ -27,6 +27,7 @@ public final class MTSRegistry {
     {
         MTSItemRegistry.itemsRegister();
         MTSCommandRegistry.commandsRegister();
+        MTSEntityRegistry.entitiesRegister();
     }
 
     /**
