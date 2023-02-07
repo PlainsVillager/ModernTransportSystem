@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "mts",
+  "version": "${version}",
+  "name": "MTS",
+  "description": "Modern Transport Mod ! This is for Fabric-23w05a ! MTS stands for Modern TranSport mod ! ",
+  "authors": [
+    "PlainsVillager",
+    "HlHill"
+  ],
+  "contact": {
+    "website": "https://github.com/PlainsVillager/ModernTransportSystem",
+    "repo": "https://github.com/PlainsVillager/ModernTransportSystem"
+  },
+  "license": "GPL-3.0",
+  "icon": "assets/mts/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "io.github.plainsvillager.mts.MTS"
+    ],
+    "client": [
+      "io.github.plainsvillager.mts.MTSClient"
+    ]
+  },
+  "mixins": [
+    "mts.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.12",
+    "fabric": "*",
+    "minecraft": ">=1.19.3"
+  }
+}
